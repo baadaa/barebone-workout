@@ -1,21 +1,29 @@
 import 'normalize.css';
 import GlobalStyles from '../../styles/global';
-import { StatusBar } from './StatusBar';
+
 const Layout: React.FC = ({ children }) => {
-  // console.log(user);
   return (
     <>
       <GlobalStyles />
       <div
         style={{
           position: 'relative',
-          display: 'flex',
+          // display: 'flex',
           margin: '0 auto',
           height: '100vh',
+          alignItems: 'center',
         }}
       >
-        <main>{children}</main>
-        <StatusBar />
+        <main
+          style={{
+            width: `100%`,
+            height: '100vh',
+            display: 'flex',
+            alignItems: 'center',
+          }}
+        >
+          {children}
+        </main>
       </div>
     </>
   );

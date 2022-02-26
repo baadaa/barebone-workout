@@ -1,40 +1,21 @@
-export type Category = 'fridge' | 'freezer';
+import { ReactChild } from 'react';
 
-export type Food = {
-  id: string;
-  img?: string;
-  quantity?: string;
-  name?: string;
-  category: Category;
-  added: string;
-  expires?: string;
-};
-
-export type NewFood = {
-  img?: string;
-  quantity?: string;
-  name?: string;
-  category: Category;
-  added: string;
-  expires?: string;
-};
-export type FridgeArea = {
-  space: Category;
-};
-
-export interface FoodList {
-  [key: string]: NewFood;
+export enum TargetArea {
+  Full = 'Full Body',
+  Upper = 'Upper Body',
+  Lower = 'Lower Body',
+  Core = 'Core',
+  Rest = 'Recovery',
 }
-export type EditorProps = {
-  isActive: boolean;
-  isRemoving?: boolean;
-  closeModal?: () => void;
-  currentSection?: Category;
-  nameIsMissing?: boolean;
+export type Program = {
+  id: number;
+  target: TargetArea;
+  routine: Array<number>;
 };
-
-export type ButtonProps = {
-  isRemoving?: boolean;
-  click?: () => void;
-  isEditing?: boolean;
+export type Workout = {
+  id: number;
+  name: string;
+  duration: number;
+  target: TargetArea;
+  visual: ReactChild;
 };

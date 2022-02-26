@@ -27,37 +27,19 @@ const DonutStyle = styled.div`
   }
 `;
 
-const Donut = ({ timeInSec, ticking }) => {
-  const [second, setSecond] = useState(0);
-  const tick = () => {
-    setSecond(second + 0.05);
-  };
-  useEffect(() => {
-    const timerID = setInterval(() => tick(), 50);
-    return function cleanUp() {
-      clearInterval(timerID);
-    };
-  });
-  useEffect(() => {
-    setSecond(0);
-  }, [timeInSec]);
-  useEffect(() => {
-    if (second >= timeInSec) setSecond(0);
-  }, [second, timeInSec]);
-  return (
-    <DonutStyle>
-      <Arc
-        center={50}
-        radius={45}
-        delta={((2 * Math.PI) / timeInSec) * second}
-        mu={-Math.PI / 2}
-        color="var(--timer-stroke)"
-        ticking={ticking}
-      />
-      {ticking && <span>{timeInSec - Math.round(second)}&#39;</span>}
-      {!ticking && <span style={{ fontSize: '3rem' }}>Done!</span>}
-    </DonutStyle>
-  );
-};
+const Donut = ({ duration, ticker, ticking, second }) => (
+  <DonutStyle>
+    <Arc
+      center={50}
+      radius={45}
+      delta={((2 * Math.PI) / duration) * second}
+      mu={-Math.PI / 2}
+      color="var(--timer-stroke)"
+      ticking={ticking}
+    />
+    {ticking && <span>{ticker}&#39;</span>}
+    {!ticking && <span style={{ fontSize: '3rem' }}>Done!</span>}
+  </DonutStyle>
+);
 
 export { Donut };
