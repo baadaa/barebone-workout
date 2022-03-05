@@ -13,6 +13,7 @@ const SettinggStyles = styled.div`
 `;
 const WorkoutPage: NextPage = () => {
   const [started, setStarted] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
   const [primaryTarget, setPrimaryTarget] = useState<TargetArea>();
   const [program, setProgram] = useState<Array<Workout>>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -21,6 +22,7 @@ const WorkoutPage: NextPage = () => {
   const [secondsSinceBeginning, setSecondsSinceBeginning] = useState(0);
   const [totalSecond, setTotalSecond] = useState(0);
   const tick = () => {
+    if (isPaused) return;
     setSecondsLeftInCurrentWorkout(secondsLeftInCurrentWorkout + 0.05);
     setSecondsSinceBeginning(secondsSinceBeginning + 0.05);
   };
@@ -46,7 +48,7 @@ const WorkoutPage: NextPage = () => {
       secondsLeftInCurrentWorkout >= program[currentIndex].duration
     ) {
       if (currentIndex >= program.length - 1) {
-        setStarted(false);
+        reset();
         return;
       }
       setSecondsLeftInCurrentWorkout(0);
@@ -113,8 +115,11 @@ const WorkoutPage: NextPage = () => {
       />
       {primaryTarget}
       {started && (
-        <button onClick={reset} style={{ position: 'fixed', top: 0, right: 0 }}>
-          {started ? 'stop' : 'start'}
+        <button
+          onClick={() => setIsPaused(!isPaused)}
+          style={{ position: 'fixed', top: 0, right: 0 }}
+        >
+          {!isPaused ? 'pause' : 'resume'}
         </button>
       )}
       <br />
