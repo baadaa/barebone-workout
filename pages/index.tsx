@@ -5,6 +5,7 @@ import { Layout, StatusBar } from '@/components/Layout/index';
 import { workouts } from '@/components/Workouts/workouts';
 import { programs } from '@/components/Workouts/programs';
 import { TargetArea, Workout } from '@/types/types';
+import Settings from '@/components/Settings';
 
 const SettinggStyles = styled.div`
   margin: 0 auto;
@@ -14,7 +15,10 @@ const SettinggStyles = styled.div`
 const WorkoutPage: NextPage = () => {
   const [started, setStarted] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
-  const [primaryTarget, setPrimaryTarget] = useState<TargetArea>();
+  const [duration, setDuration] = useState(7);
+  const [primaryTarget, setPrimaryTarget] = useState<TargetArea>(
+    TargetArea.Full
+  );
   const [program, setProgram] = useState<Array<Workout>>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [secondsLeftInCurrentWorkout, setSecondsLeftInCurrentWorkout] =
@@ -85,24 +89,33 @@ const WorkoutPage: NextPage = () => {
       {started ? (
         currentWorkout.visual
       ) : (
-        <SettinggStyles>
-          <label htmlFor="program">
-            Choose a workout:
-            <select name="program" id="program" onChange={selectProgram}>
-              <option value="">Choose</option>
-              {programs.map((item) => (
-                <option key={item.id} value={item.id}>
-                  {item.id}
-                </option>
-              ))}
-            </select>
-          </label>
-          <button
-            onClick={() => (program.length !== 0 ? setStarted(true) : reset())}
-          >
-            START
-          </button>
-        </SettinggStyles>
+        <Settings
+          duration={duration}
+          setDuration={setDuration}
+          primaryTarget={primaryTarget}
+          setPrimaryTarget={setPrimaryTarget}
+        >
+          {/* <SettinggStyles> */}
+          {/* <label htmlFor="program">
+              Choose a workout:
+              <select name="program" id="program" onChange={selectProgram}>
+                <option value="">Choose</option>
+                {programs.map((item) => (
+                  <option key={item.id} value={item.id}>
+                    {item.id}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <button
+              onClick={() =>
+                program.length !== 0 ? setStarted(true) : reset()
+              }
+            >
+              START
+            </button> */}
+          {/* </SettinggStyles> */}
+        </Settings>
       )}
       <StatusBar
         ticker={currentWorkoutTimeLeft}
