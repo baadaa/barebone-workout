@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import { StatusBar, BarGraph, Controller } from '../Timer';
 import { Workout } from '@/types/types';
+import { WrapperStyles } from '../Workouts/WorkoutLayout';
 import { workouts } from '@/components/Workouts/workouts';
+import { Confetti } from '../Graphics';
 
 const ActiveWorkout = ({ program, primaryTarget, started, setStarted }) => {
   const [routine, setRoutine] = useState<Array<Workout>>([]);
@@ -61,15 +63,7 @@ const ActiveWorkout = ({ program, primaryTarget, started, setStarted }) => {
     console.log(mappedRoutine, totalSec, primaryTarget);
   }, []);
   return (
-    <div
-      style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-      }}
-    >
+    <WrapperStyles>
       {!completed && (
         <>
           {currentWorkout?.visual}
@@ -92,7 +86,20 @@ const ActiveWorkout = ({ program, primaryTarget, started, setStarted }) => {
           />
         </>
       )}
-    </div>
+      {completed && (
+        <>
+          <Confetti />
+          <div className="post-workout">
+            <h2>Woot! Woot!</h2>
+            <h3>
+              You nailed a {Math.round(totalSecond / 60)}-minute{' '}
+              {program.target.toLowerCase()} workout !
+            </h3>
+            <button onClick={() => setStarted(false)}>Go back to menu</button>
+          </div>
+        </>
+      )}
+    </WrapperStyles>
   );
 };
 

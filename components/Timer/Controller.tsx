@@ -140,6 +140,10 @@ const ControllerStyles = styled.div`
       font-size: 1.8rem;
       margin-top: 1rem;
     }
+    button {
+      font-size: 1.6rem;
+      border-radius: 3rem;
+    }
     .button-group {
       flex-direction: column;
       max-width: 33rem;
@@ -179,13 +183,13 @@ const Controller = ({
     <ControllerStyles>
       <div className="dialogue" data-active={showDialogue}>
         <h2>Abandon the workout?</h2>
-        <p>Your progress won&apos;t be saved</p>
+        <p>Your progress so far won&apos;t be saved.</p>
         <div className="button-group">
           <button className="abandon" onClick={() => setStarted(false)}>
-            Yes, go back to menu
+            Yes, I’m stopping now.
           </button>
           <button className="continue" onClick={() => resume()}>
-            No, continue workout
+            No, let me finish.
           </button>
         </div>
       </div>
