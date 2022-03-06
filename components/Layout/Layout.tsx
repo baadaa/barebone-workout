@@ -10,7 +10,7 @@ const Layout: React.FC = ({ children }) => {
           position: 'relative',
           // display: 'flex',
           margin: '0 auto',
-          height: '100vh',
+          minHeight: '100vh',
           alignItems: 'center',
         }}
       >
@@ -20,6 +20,7 @@ const Layout: React.FC = ({ children }) => {
             height: '100vh',
             display: 'flex',
             alignItems: 'center',
+            border: '1px solid red',
           }}
         >
           {children}

@@ -99,10 +99,14 @@ export default createGlobalStyle`
   }
   .lightMode {
     --timer-stroke: var(--berry);
+    --timer-bg: var(--cyan100);
+    --timer-marker: var(--cyan500);
   }
 
   .darkMode {
     --timer-stroke: var(--berry);
+    --timer-bg: var(--cyan100);
+    --timer-marker: var(--cyan500);
   }
 
   #root, #__next {

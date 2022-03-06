@@ -193,12 +193,12 @@ const Settings: React.FC<SettingsProp> = ({
     }
   };
   const initProgram = () => {
-    console.log('handleInitiation');
+    // console.log('handleInitiation');
     const equipment =
       program.routine.indexOf(49) !== -1 || program.routine.indexOf(50) !== -1
         ? 'Chair'
         : 'Nothing';
-    console.log(program.routine, equipment);
+    // console.log(program.routine, equipment);
     setStarted(true);
   };
   return (
