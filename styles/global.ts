@@ -109,6 +109,10 @@ export default createGlobalStyle`
     --controller-text: var(--cyan800);
     --controller-button: var(--cyan500);
     --controller-button-disabled: var(--cool300);
+    --profile-bg: var(--cool50);
+    --profile-primary: var(--cool800);
+    --profile-secondary: var(--cool500);
+    --profile-button: var(--cyan600);
   }
 
   .darkMode {
@@ -121,6 +125,10 @@ export default createGlobalStyle`
     --controller-text: var(--cyan800);
     --controller-button: var(--cyan500);
     --controller-button-disabled: var(--cool300);
+    --profile-bg: var(--cool50);
+    --profile-primary: var(--cool800);
+    --profile-secondary: var(--cool500);
+    --profile-button: var(--cyan600);
   }
 
   #root, #__next {

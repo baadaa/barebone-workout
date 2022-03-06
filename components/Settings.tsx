@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Profile from './Profile';
 import { Logo } from './Graphics';
 import { TargetArea, Program } from '@/types/types';
 import { SetStateAction, useEffect } from 'react';
@@ -22,11 +23,15 @@ const SettingsWrapper = styled.div`
   justify-content: center;
   align-items: center;
   .container {
-    padding: 3.5rem 3.5rem 0;
     background-color: #fff;
     box-shadow: var(--high-elevation);
     border-radius: 1.2rem;
     max-width: 100%;
+    position: relative;
+  }
+  .inner-wrapper {
+    padding: 3.5rem 3.5rem 0;
+    margin-bottom: 3rem;
   }
   .logo {
     svg {
@@ -110,13 +115,17 @@ const SettingsWrapper = styled.div`
     }
   }
   @media screen and (max-width: 450px) {
-    .container {
+    .inner-wrapper {
       padding: 1.5rem 1.5rem 0;
       width: 100%;
     }
     .logo {
       max-width: 350px;
       margin: 0 auto 1.5rem;
+    }
+    button {
+      font-size: 1.5rem;
+      padding: 0.75em;
     }
   }
 `;
@@ -222,51 +231,54 @@ const Settings: React.FC<SettingsProp> = ({
   return (
     <SettingsWrapper>
       <div className="container">
-        <div className="logo">
-          <Logo />
+        <div className="inner-wrapper">
+          <div className="logo">
+            <Logo />
+          </div>
+          <h3>Duration:</h3>
+          <form className="radio-group">
+            {[7, 14, 21, 28].map((targetDuration, i) => (
+              <div className="radio" key={i}>
+                <input
+                  type="radio"
+                  id={`duration-${targetDuration}`}
+                  data-duration={targetDuration}
+                  checked={duration === targetDuration}
+                  onChange={handleDuration}
+                />
+                <label htmlFor={`duration-${targetDuration}`}>
+                  {targetDuration}&nbsp;min
+                </label>
+              </div>
+            ))}
+          </form>
+          <h3>Target:</h3>
+          <form className="radio-group">
+            {[
+              TargetArea.Full,
+              TargetArea.Upper,
+              TargetArea.Lower,
+              TargetArea.Core,
+            ].map((targetArea, i) => (
+              <div className="radio" key={i}>
+                <input
+                  type="radio"
+                  id={`target-${targetArea}`}
+                  checked={primaryTarget === targetArea}
+                  onChange={handleTarget}
+                  data-target={targetArea}
+                />
+                <label htmlFor={`target-${targetArea}`} key={i}>
+                  {targetArea}
+                </label>
+              </div>
+            ))}
+          </form>
+          <button type="button" onClick={initProgram}>
+            Start Workout
+          </button>
         </div>
-        <h3>Duration:</h3>
-        <form className="radio-group">
-          {[7, 14, 21, 28].map((targetDuration, i) => (
-            <div className="radio" key={i}>
-              <input
-                type="radio"
-                id={`duration-${targetDuration}`}
-                data-duration={targetDuration}
-                checked={duration === targetDuration}
-                onChange={handleDuration}
-              />
-              <label htmlFor={`duration-${targetDuration}`}>
-                {targetDuration}&nbsp;min
-              </label>
-            </div>
-          ))}
-        </form>
-        <h3>Target:</h3>
-        <form className="radio-group">
-          {[
-            TargetArea.Full,
-            TargetArea.Upper,
-            TargetArea.Lower,
-            TargetArea.Core,
-          ].map((targetArea, i) => (
-            <div className="radio" key={i}>
-              <input
-                type="radio"
-                id={`target-${targetArea}`}
-                checked={primaryTarget === targetArea}
-                onChange={handleTarget}
-                data-target={targetArea}
-              />
-              <label htmlFor={`target-${targetArea}`} key={i}>
-                {targetArea}
-              </label>
-            </div>
-          ))}
-        </form>
-        <button type="button" onClick={initProgram}>
-          Start Workout
-        </button>
+        <Profile />
       </div>
     </SettingsWrapper>
   );
