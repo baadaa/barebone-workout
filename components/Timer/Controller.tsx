@@ -57,7 +57,7 @@ const ControllerStyles = styled.div`
       box-shadow: var(--high-elevation);
     }
     &:focus {
-      box-shadow: 0px 1px 15px rgba(255, 100, 100, 0.3);
+      box-shadow: var(--focus-shadow);
     }
     &[disabled] {
       opacity: 0.7;

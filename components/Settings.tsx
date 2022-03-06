@@ -52,12 +52,9 @@ const SettingsWrapper = styled.div`
     margin-left: 0.8rem;
   }
   input {
-    display: none;
-  }
-  input:checked + label {
-    border: 1px solid var(--cyan500);
-    background: var(--cyan50);
-    color: var(--cyan900);
+    overflow: hidden;
+    width: 0;
+    height: 0;
   }
   label {
     border-radius: 0.7rem;
@@ -70,7 +67,21 @@ const SettingsWrapper = styled.div`
     cursor: pointer;
     padding: 1rem;
     font-size: 1.3rem;
+    background: #fff;
     flex: 1;
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  }
+  input:focus + label {
+    box-shadow: var(--focus-shadow);
+  }
+  input:checked + label {
+    border: 1px solid var(--cyan500);
+    background: var(--cyan50);
+    color: var(--cyan900);
+  }
+  input + label:hover {
+    box-shadow: var(--low-elevation);
+    transform: translateY(-1px);
   }
   .radio-group {
     display: flex;
@@ -87,8 +98,15 @@ const SettingsWrapper = styled.div`
     padding: 1em;
     width: 100%;
     margin-top: 2rem;
+    transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
     &:focus {
       border: var(--cyan800);
+      box-shadow: var(--focus-shadow);
+    }
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--low-elevation);
+      background-color: var(--cyan600);
     }
   }
   @media screen and (max-width: 450px) {
@@ -208,7 +226,7 @@ const Settings: React.FC<SettingsProp> = ({
           <Logo />
         </div>
         <h3>Duration:</h3>
-        <div className="radio-group">
+        <form className="radio-group">
           {[7, 14, 21, 28].map((targetDuration, i) => (
             <div className="radio" key={i}>
               <input
@@ -223,9 +241,9 @@ const Settings: React.FC<SettingsProp> = ({
               </label>
             </div>
           ))}
-        </div>
+        </form>
         <h3>Target:</h3>
-        <div className="radio-group">
+        <form className="radio-group">
           {[
             TargetArea.Full,
             TargetArea.Upper,
@@ -245,7 +263,7 @@ const Settings: React.FC<SettingsProp> = ({
               </label>
             </div>
           ))}
-        </div>
+        </form>
         <button type="button" onClick={initProgram}>
           Start Workout
         </button>

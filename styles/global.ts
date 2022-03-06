@@ -64,6 +64,7 @@ export default createGlobalStyle`
     --medium-elevation: 0px 7px 9px rgba(0, 0, 0, 0.08), 2px 2px 9px rgba(0, 0, 0, 0.06);
     --low-elevation: 0px 4px 4px rgba(0, 0, 0, 0.1), 1px 1px 8px rgba(0, 0, 0, 0.06);
     --subtle-elevation: 0px 2px 7px rgba(0, 0, 0, 0.05), 1px 1px 8px rgba(0, 0, 0, 0.06);
+    --focus-shadow: 0px 1px 15px rgba(255, 100, 100, 0.4);
     --ticker-height: 1.5rem;
   }
   
