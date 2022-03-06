@@ -63,7 +63,6 @@ const ActiveWorkout = ({ program, primaryTarget, started, setStarted }) => {
   return (
     <div
       style={{
-        border: '1px solid red',
         position: 'absolute',
         top: 0,
         left: 0,
@@ -71,24 +70,28 @@ const ActiveWorkout = ({ program, primaryTarget, started, setStarted }) => {
         bottom: 0,
       }}
     >
-      {currentWorkout?.visual}
-      <StatusBar
-        second={Math.round(currentWorkoutTimeLeft)}
-        currentWorkout={currentWorkout?.name}
-        nextWorkout={nextWorkout}
-        focus={currentWorkout?.target}
-      />
-      <BarGraph
-        duration={currentWorkout?.duration}
-        timeLeft={currentWorkoutTimeLeft}
-      />
-      <Controller
-        primaryTarget={primaryTarget}
-        totalLeft={Math.round(totalTimeLeft)}
-        isPaused={isPaused}
-        setIsPaused={setIsPaused}
-        setStarted={setStarted}
-      />
+      {!completed && (
+        <>
+          {currentWorkout?.visual}
+          <StatusBar
+            second={Math.round(currentWorkoutTimeLeft)}
+            currentWorkout={currentWorkout?.name}
+            nextWorkout={nextWorkout}
+            focus={currentWorkout?.target}
+          />
+          <BarGraph
+            duration={currentWorkout?.duration}
+            timeLeft={currentWorkoutTimeLeft}
+          />
+          <Controller
+            primaryTarget={primaryTarget}
+            totalLeft={Math.round(totalTimeLeft)}
+            isPaused={isPaused}
+            setIsPaused={setIsPaused}
+            setStarted={setStarted}
+          />
+        </>
+      )}
     </div>
   );
 };

@@ -24,9 +24,30 @@ const StatusStyle = styled.footer`
   h3 {
     color: var(--label-next);
     font-weight: 500;
-
+    font-size: 1.8rem;
     span {
       font-weight: 400;
+    }
+  }
+  @media screen and (max-width: 900px) {
+    bottom: calc(2rem + var(--ticker-height));
+    left: 2rem;
+    .seconds {
+      font-size: 4.8rem;
+    }
+    h2 {
+      font-size: 2.4rem;
+    }
+    h3 {
+      font-size: 1.6rem;
+    }
+  }
+  @media screen and (max-width: 640px) {
+    h2 {
+      font-size: 2rem;
+    }
+    h3 {
+      font-size: 1.4rem;
     }
   }
 `;
@@ -41,7 +62,7 @@ const StatusBar = ({ currentWorkout, nextWorkout, focus, second }) => {
       </h2>
       <h3>
         {nextWorkout === null ? (
-          <span>End</span>
+          <span>That’s a wrap</span>
         ) : (
           <>
             <span>Next Up:</span> {nextWorkout}

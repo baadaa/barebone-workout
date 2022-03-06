@@ -14,6 +14,14 @@ const ControllerStyles = styled.div`
     font-size: 5.6rem;
     color: var(--label-current);
   }
+  @media screen and (max-width: 900px) {
+    top: 1.5rem;
+    right: 1.5rem;
+    bottom: auto;
+  }
+  @media screen and (max-width: 640px) {
+    left: calc(50% - 13rem);
+  }
   h4 {
     margin: 0;
     display: flex;

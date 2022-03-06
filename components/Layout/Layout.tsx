@@ -20,7 +20,6 @@ const Layout: React.FC = ({ children }) => {
             height: '100vh',
             display: 'flex',
             alignItems: 'center',
-            border: '1px solid red',
           }}
         >
           {children}
