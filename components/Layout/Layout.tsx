@@ -6,18 +6,16 @@ const Layout: React.FC = ({ children }) => {
     <>
       <GlobalStyles />
       <div
+        className="height100vh"
         style={{
           position: 'relative',
-          // display: 'flex',
           margin: '0 auto',
-          minHeight: '100vh',
-          alignItems: 'center',
         }}
       >
         <main
+          className="height100vh"
           style={{
             width: `100%`,
-            height: '100vh',
             display: 'flex',
             alignItems: 'center',
           }}

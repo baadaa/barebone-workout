@@ -2,6 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
   :root {
+    --app-height: 100vh;
     --bodyBg: #fff;
     --cyan: #00a2d9;
     --berry: #b7295a;
@@ -67,7 +68,11 @@ export default createGlobalStyle`
     --focus-shadow: 0px 1px 15px rgba(255, 100, 100, 0.4);
     --ticker-height: 1.5rem;
   }
-  
+  .height100vh {
+    height: 100vh;
+    height: var(--app-height);
+
+  }
   html,
   body {
     padding: 0;

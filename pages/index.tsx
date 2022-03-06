@@ -1,9 +1,9 @@
 import type { NextPage } from 'next';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Layout, ActiveWorkout } from '@/components/Layout/index';
 import { TargetArea, Program } from '@/types/types';
 import Settings from '@/components/Settings';
-
+import { isBrowser } from '../utils';
 const WorkoutPage: NextPage = () => {
   const [started, setStarted] = useState(false);
   const [duration, setDuration] = useState(7);
@@ -11,7 +11,17 @@ const WorkoutPage: NextPage = () => {
     TargetArea.Full
   );
   const [program, setProgram] = useState<Program>();
-
+  useEffect(() => {
+    if (!isBrowser) return;
+    const fitHeight = () => {
+      document.documentElement.style.setProperty(
+        '--app-height',
+        `${window.innerHeight}px`
+      );
+    };
+    fitHeight();
+    window.addEventListener('resize', fitHeight);
+  }, []);
   return (
     <Layout>
       {started ? (
