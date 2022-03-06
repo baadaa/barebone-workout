@@ -87,6 +87,7 @@ const ActiveWorkout = ({ program, primaryTarget, started, setStarted }) => {
         totalLeft={Math.round(totalTimeLeft)}
         isPaused={isPaused}
         setIsPaused={setIsPaused}
+        setStarted={setStarted}
       />
     </div>
   );

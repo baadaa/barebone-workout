@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import styled from 'styled-components';
+import { IconPause, IconPlay, IconStop } from '../Graphics';
 
 const ControllerStyles = styled.div`
   position: absolute;
@@ -39,9 +41,9 @@ const ControllerStyles = styled.div`
     outline: none;
     border-radius: 0.8rem;
     font-size: 1.4rem;
-    font-weight: 600;
-    /* text-transform: uppercase; */
+    font-weight: 500;
     padding: 1rem 0.5rem;
+    transition: transform 0.2s;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -72,50 +74,131 @@ const ControllerStyles = styled.div`
   button + button {
     margin-left: 1rem;
   }
+  .paused {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    svg {
+      pointer-events: all;
+      fill: var(--cool200);
+      opacity: 0.4;
+    }
+    button {
+      flex: 0;
+      background-color: transparent;
+      box-shadow: none;
+    }
+  }
+  .dialogue {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    background-color: #222;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    transform: translateY(-20vh);
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+    transition: transform 0.2s, opacity 0.2s, visibility 0.2s;
+    &[data-active='true'] {
+      opacity: 1;
+      transform: translateY(0);
+      visibility: visible;
+      pointer-events: all;
+    }
+    h2,
+    p {
+      margin: 0;
+    }
+    h2 {
+      font-size: 2.2rem;
+    }
+    p {
+      font-size: 1.8rem;
+      margin-top: 1rem;
+    }
+    .button-group {
+      flex-direction: column;
+      max-width: 33rem;
+      margin-top: 2rem;
+    }
+    button + button {
+      margin-left: 0;
+      margin-top: 1rem;
+    }
+    button.abandon {
+      background-color: transparent;
+      color: var(--yellow500);
+      border: 1px solid var(--yellow500);
+    }
+    button.continue {
+      background-color: var(--green500);
+      color: var(--green900);
+    }
+  }
 `;
 
-const Controller = ({ primaryTarget, totalLeft, isPaused, setIsPaused }) => {
+const Controller = ({
+  primaryTarget,
+  totalLeft,
+  isPaused,
+  setIsPaused,
+  setStarted,
+}) => {
   const min = Math.floor(totalLeft / 60);
   const sec = totalLeft % 60;
+  const [showDialogue, setShowDialogue] = useState(false);
+  const resume = () => {
+    setShowDialogue(false);
+    setIsPaused(false);
+  };
   return (
     <ControllerStyles>
+      <div className="dialogue" data-active={showDialogue}>
+        <h2>Abandon the workout?</h2>
+        <p>Your progress won&apos;t be saved</p>
+        <div className="button-group">
+          <button className="abandon" onClick={() => setStarted(false)}>
+            Yes, go back to menu
+          </button>
+          <button className="continue" onClick={() => resume()}>
+            No, continue workout
+          </button>
+        </div>
+      </div>
+      {isPaused && (
+        <div className="paused">
+          <button onClick={() => setIsPaused(false)}>
+            <IconPause width={150} height={200} />
+          </button>
+        </div>
+      )}
       <h4>
         <span>{primaryTarget} Workout</span>
         {min}:{sec < 10 ? `0${sec}` : sec}
       </h4>
       <div className="button-group">
         <button onClick={() => setIsPaused(!isPaused)}>
-          {!isPaused ? (
-            <svg
-              width="14"
-              height="17"
-              viewBox="0 0 14 17"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <rect width="5" height="17" />{' '}
-              <rect x="9" width="5" height="17" />{' '}
-            </svg>
-          ) : (
-            <svg
-              width="15"
-              height="17"
-              viewBox="0 0 15 17"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M15 8.5L0.749999 16.7272L0.75 0.272758L15 8.5Z" />
-            </svg>
-          )}
+          {!isPaused ? <IconPause /> : <IconPlay />}
           {!isPaused ? 'Pause' : 'Resume'}
         </button>
-        <button disabled={!isPaused}>
-          <svg
-            width="13"
-            height="13"
-            viewBox="0 0 17 17"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <rect width="17" height="17" />
-          </svg>
+        <button disabled={!isPaused} onClick={() => setShowDialogue(true)}>
+          <IconStop />
           Stop
         </button>
       </div>
