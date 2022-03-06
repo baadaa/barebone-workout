@@ -1,17 +1,11 @@
 import type { NextPage } from 'next';
 import { useState, useEffect } from 'react';
-import styled from 'styled-components';
 import { Layout, StatusBar } from '@/components/Layout/index';
 import { workouts } from '@/components/Workouts/workouts';
 import { programs } from '@/components/Workouts/programs';
-import { TargetArea, Workout } from '@/types/types';
+import { TargetArea, Workout, Program } from '@/types/types';
 import Settings from '@/components/Settings';
 
-const SettinggStyles = styled.div`
-  margin: 0 auto;
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
-  padding: 2rem;
-`;
 const WorkoutPage: NextPage = () => {
   const [started, setStarted] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
@@ -19,7 +13,8 @@ const WorkoutPage: NextPage = () => {
   const [primaryTarget, setPrimaryTarget] = useState<TargetArea>(
     TargetArea.Full
   );
-  const [program, setProgram] = useState<Array<Workout>>([]);
+  const [routine, setRoutine] = useState<Array<Workout>>([]);
+  const [program, setProgram] = useState<Program>();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [secondsLeftInCurrentWorkout, setSecondsLeftInCurrentWorkout] =
     useState(0);
@@ -31,13 +26,13 @@ const WorkoutPage: NextPage = () => {
     setSecondsSinceBeginning(secondsSinceBeginning + 0.05);
   };
   const totalTimeLeft = totalSecond - Math.round(secondsSinceBeginning);
-  const isLastWorkout = currentIndex === program.length - 1;
-  const currentWorkout = program[currentIndex];
+  const isLastWorkout = currentIndex === routine.length - 1;
+  const currentWorkout = routine[currentIndex];
   const currentWorkoutTimeLeft =
     currentWorkout?.duration - Math.round(secondsLeftInCurrentWorkout);
   const nextWorkout = isLastWorkout
     ? 'End'
-    : 'Next Up: ' + program[currentIndex + 1]?.name;
+    : 'Next Up: ' + routine[currentIndex + 1]?.name;
   useEffect(() => {
     if (started) {
       const timerID = setInterval(() => tick(), 50);
@@ -49,9 +44,9 @@ const WorkoutPage: NextPage = () => {
   useEffect(() => {
     if (
       started &&
-      secondsLeftInCurrentWorkout >= program[currentIndex].duration
+      secondsLeftInCurrentWorkout >= routine[currentIndex].duration
     ) {
-      if (currentIndex >= program.length - 1) {
+      if (currentIndex >= routine.length - 1) {
         reset();
         return;
       }
@@ -59,27 +54,22 @@ const WorkoutPage: NextPage = () => {
       setCurrentIndex(currentIndex + 1);
     }
   });
-  const selectProgram = (e) => {
-    const programId = e.target.value;
-    if (!programId) return setStarted(false);
-    const selectedProgram = programs.find(
-      (item) => item.id.toString() === programId
-    );
-    const routine = selectedProgram.routine;
-    const mappedRoutine = routine.map((workId) =>
+  useEffect(() => {
+    if (!program) return;
+    const mappedRoutine = program.routine.map((workId) =>
       workouts.find((workout) => workout.id === workId)
     );
     const totalSec = mappedRoutine.reduce(
-      (total, workout) => total + workout.duration,
+      (total, workout) => total + workout?.duration,
       0
     );
-    setPrimaryTarget(selectedProgram.target);
-    setProgram(mappedRoutine);
+    setRoutine(mappedRoutine);
     setTotalSecond(totalSec);
-  };
+    console.log(mappedRoutine, totalSec, primaryTarget);
+  }, [program]);
   const reset = () => {
     setStarted(false);
-    setProgram([]);
+    setRoutine([]);
     setSecondsLeftInCurrentWorkout(0);
     setSecondsSinceBeginning(0);
     setCurrentIndex(0);
@@ -94,28 +84,10 @@ const WorkoutPage: NextPage = () => {
           setDuration={setDuration}
           primaryTarget={primaryTarget}
           setPrimaryTarget={setPrimaryTarget}
-        >
-          {/* <SettinggStyles> */}
-          {/* <label htmlFor="program">
-              Choose a workout:
-              <select name="program" id="program" onChange={selectProgram}>
-                <option value="">Choose</option>
-                {programs.map((item) => (
-                  <option key={item.id} value={item.id}>
-                    {item.id}
-                  </option>
-                ))}
-              </select>
-            </label>
-            <button
-              onClick={() =>
-                program.length !== 0 ? setStarted(true) : reset()
-              }
-            >
-              START
-            </button> */}
-          {/* </SettinggStyles> */}
-        </Settings>
+          program={program}
+          setProgram={setProgram}
+          setStarted={setStarted}
+        />
       )}
       <StatusBar
         ticker={currentWorkoutTimeLeft}
@@ -126,7 +98,7 @@ const WorkoutPage: NextPage = () => {
         nextWorkout={nextWorkout}
         focus={currentWorkout?.target}
       />
-      {primaryTarget}
+      {/* {primaryTarget} */}
       {started && (
         <button
           onClick={() => setIsPaused(!isPaused)}
@@ -135,10 +107,10 @@ const WorkoutPage: NextPage = () => {
           {!isPaused ? 'pause' : 'resume'}
         </button>
       )}
-      <br />
+      {/* <br />
       total left: {totalTimeLeft}
       <br />
-      current workout left: {currentWorkoutTimeLeft}
+      current workout left: {currentWorkoutTimeLeft} */}
     </Layout>
   );
 };

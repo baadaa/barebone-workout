@@ -14,3 +14,10 @@ export const toggleColorMode = (targetMode: Theme): void => {
     document.body.className = targetMode === 'Dark' ? 'darkMode' : 'lightMode';
   }
 };
+
+export const getRandomInt = (min: number, max: number) => {
+  const bottom = Math.ceil(min);
+  const top = Math.floor(max);
+  return Math.floor(Math.random() * (top - bottom) + bottom);
+  // Maximum is exclusive and minimum is inclusive
+};

@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 import { Logo } from './Graphics';
-import { TargetArea, Workout } from '@/types/types';
-import { SetStateAction } from 'react';
+import { TargetArea, Program } from '@/types/types';
+import { SetStateAction, useEffect } from 'react';
+import { programs } from './Workouts/programs';
+import { getRandomInt } from '../utils';
 
 const SettingsWrapper = styled.div`
   position: absolute;
@@ -9,6 +11,7 @@ const SettingsWrapper = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
+  z-index: 999;
   padding: 1.5rem;
   background: linear-gradient(
     106.79deg,
@@ -104,12 +107,18 @@ type SettingsProp = {
   setDuration: React.Dispatch<SetStateAction<number>>;
   primaryTarget: TargetArea;
   setPrimaryTarget: React.Dispatch<SetStateAction<TargetArea>>;
+  program: Program;
+  setProgram: React.Dispatch<SetStateAction<Program>>;
+  setStarted: React.Dispatch<SetStateAction<boolean>>;
 };
 const Settings: React.FC<SettingsProp> = ({
   duration,
   setDuration,
   primaryTarget,
   setPrimaryTarget,
+  program,
+  setProgram,
+  setStarted,
 }) => {
   const handleDuration = (e) => {
     const targetDuration = parseFloat(e.target.dataset.duration);
@@ -118,6 +127,79 @@ const Settings: React.FC<SettingsProp> = ({
   const handleTarget = (e) => {
     const targetArea = e.target.dataset.target as TargetArea;
     setPrimaryTarget(targetArea);
+  };
+
+  useEffect(() => {
+    updateProgram();
+  }, [duration, primaryTarget]);
+  const updateProgram = () => {
+    const matchingPrograms = programs.filter(
+      (item) => item.target === primaryTarget
+    );
+    const min = 0;
+    const max = matchingPrograms.length;
+    let program1;
+    let program2;
+    let program3;
+    let program4;
+    let merged;
+    switch (duration) {
+      case 7:
+        return setProgram(matchingPrograms[getRandomInt(min, max)]);
+      case 14:
+        program1 = matchingPrograms[getRandomInt(min, max)];
+        program2 = matchingPrograms[getRandomInt(min, max)];
+        merged = {
+          id: 999,
+          target: primaryTarget,
+          routine: [...program1.routine, 0, ...program2.routine],
+        };
+        return setProgram(merged);
+      case 21:
+        program1 = matchingPrograms[getRandomInt(min, max)];
+        program2 = matchingPrograms[getRandomInt(min, max)];
+        program3 = matchingPrograms[getRandomInt(min, max)];
+        merged = {
+          id: 999,
+          target: primaryTarget,
+          routine: [
+            ...program1.routine,
+            0,
+            ...program2.routine,
+            0,
+            ...program3.routine,
+          ],
+        };
+        return setProgram(merged);
+      case 28:
+        program1 = matchingPrograms[getRandomInt(min, max)];
+        program2 = matchingPrograms[getRandomInt(min, max)];
+        program3 = matchingPrograms[getRandomInt(min, max)];
+        program4 = matchingPrograms[getRandomInt(min, max)];
+        merged = {
+          id: 999,
+          target: primaryTarget,
+          routine: [
+            ...program1.routine,
+            0,
+            ...program2.routine,
+            0,
+            ...program3.routine,
+            0,
+            ...program4.routine,
+          ],
+        };
+        return setProgram(merged);
+    }
+  };
+  const initProgram = () => {
+    console.log('handleInitiation');
+    const equipment =
+      program.routine.indexOf(49) !== -1 || program.routine.indexOf(50) !== -1
+        ? 'Chair'
+        : 'Nothing';
+    console.log(program.routine, equipment);
+    setStarted(true);
   };
   return (
     <SettingsWrapper>
@@ -164,7 +246,9 @@ const Settings: React.FC<SettingsProp> = ({
             </div>
           ))}
         </div>
-        <button type="button">Start Workout</button>
+        <button type="button" onClick={initProgram}>
+          Start Workout
+        </button>
       </div>
     </SettingsWrapper>
   );
