@@ -1,30 +1,27 @@
 import { useEffect, useState } from 'react';
-import { StatusBar } from './index';
-import { Bar } from '../Timer';
+import { StatusBar, BarGraph, Controller } from '../Timer';
 import { Workout } from '@/types/types';
 import { workouts } from '@/components/Workouts/workouts';
 
 const ActiveWorkout = ({ program, primaryTarget, started, setStarted }) => {
   const [routine, setRoutine] = useState<Array<Workout>>([]);
   const [isPaused, setIsPaused] = useState(false);
+  const [completed, setCompleted] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [secondsLeftInCurrentWorkout, setSecondsLeftInCurrentWorkout] =
-    useState(0);
+  const [secondsInCurrentWorkout, setSecondsInCurrentWorkout] = useState(0);
   const [secondsSinceBeginning, setSecondsSinceBeginning] = useState(0);
   const [totalSecond, setTotalSecond] = useState(0);
   const tick = () => {
     if (isPaused) return;
-    setSecondsLeftInCurrentWorkout(secondsLeftInCurrentWorkout + 0.5);
+    setSecondsInCurrentWorkout(secondsInCurrentWorkout + 0.5);
     setSecondsSinceBeginning(secondsSinceBeginning + 0.5);
   };
-  const totalTimeLeft = totalSecond - Math.round(secondsSinceBeginning);
+  const totalTimeLeft = totalSecond - secondsSinceBeginning;
   const isLastWorkout = currentIndex === routine.length - 1;
   const currentWorkout = routine[currentIndex];
   const currentWorkoutTimeLeft =
-    currentWorkout?.duration - secondsLeftInCurrentWorkout;
-  const nextWorkout = isLastWorkout
-    ? 'End'
-    : 'Next Up: ' + routine[currentIndex + 1]?.name;
+    currentWorkout?.duration - secondsInCurrentWorkout;
+  const nextWorkout = isLastWorkout ? null : routine[currentIndex + 1]?.name;
   useEffect(() => {
     if (started) {
       const timerID = setInterval(() => tick(), 500);
@@ -33,26 +30,24 @@ const ActiveWorkout = ({ program, primaryTarget, started, setStarted }) => {
       };
     }
   });
-  const reset = () => {
-    setStarted(false);
+  const completeWorkout = () => {
+    // setStarted(false);
+    setCompleted(true);
     setRoutine([]);
-    setSecondsLeftInCurrentWorkout(0);
+    setSecondsInCurrentWorkout(0);
     setSecondsSinceBeginning(0);
     setCurrentIndex(0);
   };
   useEffect(() => {
-    if (
-      started &&
-      secondsLeftInCurrentWorkout >= routine[currentIndex]?.duration
-    ) {
+    if (started && secondsInCurrentWorkout >= routine[currentIndex]?.duration) {
       if (currentIndex >= routine.length - 1) {
-        reset();
+        completeWorkout();
         return;
       }
-      setSecondsLeftInCurrentWorkout(0);
+      setSecondsInCurrentWorkout(0);
       setCurrentIndex(currentIndex + 1);
     }
-  });
+  }, [secondsInCurrentWorkout]);
   useEffect(() => {
     const mappedRoutine = program.routine.map((workId) =>
       workouts.find((workout) => workout.id === workId)
@@ -78,28 +73,21 @@ const ActiveWorkout = ({ program, primaryTarget, started, setStarted }) => {
     >
       {currentWorkout?.visual}
       <StatusBar
-        ticker={currentWorkoutTimeLeft}
-        second={secondsLeftInCurrentWorkout}
-        duration={currentWorkout?.duration}
-        ticking={started}
+        second={Math.round(currentWorkoutTimeLeft)}
         currentWorkout={currentWorkout?.name}
         nextWorkout={nextWorkout}
         focus={currentWorkout?.target}
       />
-      <Bar
+      <BarGraph
         duration={currentWorkout?.duration}
         timeLeft={currentWorkoutTimeLeft}
       />
-      <br />
-      total left: {totalTimeLeft}
-      <br />
-      current workout left: {currentWorkoutTimeLeft}
-      <button
-        onClick={() => setIsPaused(!isPaused)}
-        style={{ position: 'fixed', top: 0, right: 0 }}
-      >
-        {!isPaused ? 'pause' : 'resume'}
-      </button>
+      <Controller
+        primaryTarget={primaryTarget}
+        totalLeft={Math.round(totalTimeLeft)}
+        isPaused={isPaused}
+        setIsPaused={setIsPaused}
+      />
     </div>
   );
 };

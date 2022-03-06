@@ -6,7 +6,7 @@ const BarStyles = styled.div`
   left: 0;
   right: 0;
   display: flex;
-  height: 2rem;
+  height: var(--ticker-height);
   background-color: var(--timer-bg);
   .marker {
     background-color: var(--timer-marker);
@@ -14,7 +14,7 @@ const BarStyles = styled.div`
   }
 `;
 
-const Bar = ({ duration, timeLeft }) => (
+const BarGraph = ({ duration, timeLeft }) => (
   <BarStyles>
     <div
       className="marker"
@@ -23,4 +23,4 @@ const Bar = ({ duration, timeLeft }) => (
   </BarStyles>
 );
 
-export { Bar };
+export { BarGraph };

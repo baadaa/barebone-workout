@@ -1,3 +1,5 @@
 export * from './Arc';
 export * from './Donut';
-export * from './Bar';
+export * from './BarGraph';
+export * from './StatusBar';
+export * from './Controller';

@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
   :root {
-    --bodyBg: #eee;
+    --bodyBg: #fff;
     --cyan: #00a2d9;
     --berry: #b7295a;
     --green: #7ab800;
@@ -64,6 +64,7 @@ export default createGlobalStyle`
     --medium-elevation: 0px 7px 9px rgba(0, 0, 0, 0.08), 2px 2px 9px rgba(0, 0, 0, 0.06);
     --low-elevation: 0px 4px 4px rgba(0, 0, 0, 0.1), 1px 1px 8px rgba(0, 0, 0, 0.06);
     --subtle-elevation: 0px 2px 7px rgba(0, 0, 0, 0.05), 1px 1px 8px rgba(0, 0, 0, 0.06);
+    --ticker-height: 1.5rem;
   }
   
   html,
@@ -101,12 +102,24 @@ export default createGlobalStyle`
     --timer-stroke: var(--berry);
     --timer-bg: var(--cyan100);
     --timer-marker: var(--cyan500);
+    --label-current: var(--cyan600);
+    --label-next: var(--cool500);
+    --controller-bg: var(--cool50);
+    --controller-text: var(--cyan800);
+    --controller-button: var(--cyan500);
+    --controller-button-disabled: var(--cool300);
   }
 
   .darkMode {
     --timer-stroke: var(--berry);
     --timer-bg: var(--cyan100);
     --timer-marker: var(--cyan500);
+    --label-current: var(--cyan600);
+    --label-next: var(--cool500);
+    --controller-bg: var(--cool50);
+    --controller-text: var(--cyan800);
+    --controller-button: var(--cyan500);
+    --controller-button-disabled: var(--cool300);
   }
 
   #root, #__next {
