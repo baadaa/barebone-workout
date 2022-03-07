@@ -3,7 +3,8 @@ import { useEffect, useState } from 'react';
 import { Layout, ActiveWorkout } from '@/components/Layout/index';
 import { TargetArea, Program } from '@/types/types';
 import Settings from '@/components/Settings';
-import { isBrowser } from '../utils';
+import { isBrowser, setLocalStorage, localStorageIsAvailable } from '../utils';
+
 const WorkoutPage: NextPage = () => {
   const [started, setStarted] = useState(false);
   const [duration, setDuration] = useState(7);
@@ -11,6 +12,7 @@ const WorkoutPage: NextPage = () => {
     TargetArea.Full
   );
   const [program, setProgram] = useState<Program>();
+
   useEffect(() => {
     if (!isBrowser) return;
     const fitHeight = () => {
@@ -22,6 +24,7 @@ const WorkoutPage: NextPage = () => {
     fitHeight();
     window.addEventListener('resize', fitHeight);
   }, []);
+
   return (
     <Layout>
       {started ? (

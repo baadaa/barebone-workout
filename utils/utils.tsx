@@ -21,3 +21,58 @@ export const getRandomInt = (min: number, max: number) => {
   return Math.floor(Math.random() * (top - bottom) + bottom);
   // Maximum is exclusive and minimum is inclusive
 };
+
+const adjectives = [
+  'Shy',
+  'Cranky',
+  'Flamboyant',
+  'Curious',
+  'Angry',
+  'Snarky',
+  'Briliant',
+  'Bald',
+  'Elaborate',
+  'Shocking',
+  'Colorful',
+  'Boring',
+  'Nasty',
+  'Musical',
+  'Deadpan',
+  'Motherly',
+  'Squishy',
+  'Persistent',
+  'Stingy',
+  'Idle',
+  'Excited',
+  'Moody',
+  'Distracted',
+  'Happy',
+  'Shiny',
+];
+
+const animals = [
+  'Octopus',
+  'Elephant',
+  'Hippo',
+  'Jellyfish',
+  'Cat',
+  'Kangaroo',
+  'Shark',
+  'Anglerfish',
+  'Giraffe',
+  'Zebra',
+  'Sloth',
+  'Anemone',
+  'Spider',
+  'Grasshopper',
+  'Snail',
+  'Seagull',
+];
+
+export const getRandomName = (): string => {
+  const adj = adjectives.length;
+  const noun = animals.length;
+  return (
+    adjectives[getRandomInt(0, adj)] + ' ' + animals[getRandomInt(0, noun)]
+  );
+};

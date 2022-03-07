@@ -159,6 +159,7 @@ const Settings: React.FC<SettingsProp> = ({
   useEffect(() => {
     updateProgram();
   }, [duration, primaryTarget]);
+
   const updateProgram = () => {
     const matchingPrograms = programs.filter(
       (item) => item.target === primaryTarget

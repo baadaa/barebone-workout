@@ -1,5 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import {
+  getRandomName,
+  setLocalStorage,
+  isBrowser,
+  localStorageIsAvailable,
+} from '../utils';
 import { Avatar, IconShuffle } from './Graphics';
 const FooterWrapper = styled.footer`
   background-color: var(--profile-bg);
@@ -70,6 +76,7 @@ const ProfileWrapper = styled.div`
     &:hover {
       background: transparent;
       box-shadow: none;
+      transform: translateX(2.5rem) translateY(-2.5rem) scale(1.2);
     }
   }
   .profile {
@@ -95,13 +102,26 @@ const ProfileWrapper = styled.div`
       padding: 1rem 5rem 1rem 1rem;
       border: 1px solid var(--cool200);
     }
-    svg {
+    .shuffle {
+      background: transparent;
+      transform: none;
       position: absolute;
+      top: 1.4rem;
+      right: 1.8rem;
+      padding: 0;
+      margin: 0;
+      width: auto;
+      &:hover {
+        box-shadow: none;
+      }
+      &:focus {
+        box-shadow: none;
+      }
+    }
+    svg {
       width: 2rem;
       margin: 0;
       height: 1.6rem;
-      top: 1.4rem;
-      right: 1.8rem;
     }
   }
   @media screen and (max-width: 450px) {
@@ -128,12 +148,24 @@ const ProfileWrapper = styled.div`
 
 const Profile = () => {
   const [expanded, setExpanded] = useState(false);
+  const [name, setName] = useState('');
+  useEffect(() => {
+    if (!isBrowser) return;
+    if (localStorageIsAvailable('bb7_name')) {
+      setName(window.localStorage.getItem('bb7_name'));
+    } else {
+      const tempName = getRandomName();
+      setLocalStorage('bb7_name', tempName);
+      setName(tempName);
+    }
+  }, []);
+  useEffect(() => setLocalStorage('bb7_name', name), [name]);
   return !expanded ? (
     <FooterWrapper>
       <div className="left">
         <Avatar />
         <div className="overview">
-          <p className="name">Curious Zebra</p>
+          <p className="name">{name}</p>
           <p className="summary">6 workouts • 49 mins</p>
         </div>
       </div>
@@ -151,8 +183,15 @@ const Profile = () => {
         </button>
         <Avatar width="80" height="80" />
         <div className="input-area">
-          <input className="name" type="text" value="Curious Zebra" readOnly />
-          <IconShuffle />
+          <input
+            className="name"
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <button className="shuffle" onClick={() => setName(getRandomName())}>
+            <IconShuffle />
+          </button>
         </div>
       </div>
       <br />
