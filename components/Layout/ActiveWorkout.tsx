@@ -3,6 +3,11 @@ import { StatusBar, BarGraph, Controller } from '../Timer';
 import { Workout } from '@/types/types';
 import { WrapperStyles } from '../Workouts/WorkoutLayout';
 import { workouts } from '@/components/Workouts/workouts';
+import {
+  isBrowser,
+  localStorageIsAvailable,
+  setLocalStorage,
+} from '@/coreMethods/utils';
 import { Confetti } from '../Graphics';
 
 const ActiveWorkout = ({ program, primaryTarget, started, setStarted }) => {
@@ -60,8 +65,21 @@ const ActiveWorkout = ({ program, primaryTarget, started, setStarted }) => {
     );
     setRoutine(mappedRoutine);
     setTotalSecond(totalSec);
-    console.log(mappedRoutine, totalSec, primaryTarget);
+    // console.log(mappedRoutine, totalSec, primaryTarget);
   }, []);
+  useEffect(() => {
+    if (!completed || !isBrowser) return;
+    const latestArr = localStorageIsAvailable('bb7_history')
+      ? JSON.parse(window.localStorage.getItem('bb7_history'))
+      : [];
+    console.log(latestArr);
+    latestArr.push({
+      date: new Date().toLocaleDateString(),
+      duration: totalSecond,
+      target: primaryTarget,
+    });
+    setLocalStorage('bb7_history', JSON.stringify(latestArr));
+  }, [completed]);
   return (
     <WrapperStyles>
       {!completed && (
