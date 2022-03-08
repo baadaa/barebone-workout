@@ -72,7 +72,6 @@ const ActiveWorkout = ({ program, primaryTarget, started, setStarted }) => {
     const latestArr = localStorageIsAvailable('bb7_history')
       ? JSON.parse(window.localStorage.getItem('bb7_history'))
       : [];
-    console.log(latestArr);
     latestArr.push({
       date: new Date().toLocaleDateString(),
       duration: totalSecond,
