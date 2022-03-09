@@ -67,6 +67,11 @@ export default createGlobalStyle`
     --subtle-elevation: 0px 2px 7px rgba(0, 0, 0, 0.05), 1px 1px 8px rgba(0, 0, 0, 0.06);
     --focus-shadow: 0px 1px 15px rgba(255, 100, 100, 0.4);
     --ticker-height: 1.5rem;
+    --flesh: #d5ae83;
+    --flesh-shadow: #b7926c;
+    --pants: #414141;
+    --shirt: #42cbef;
+    --shirt-shadow: #2ca9c6;
   }
   .height100vh {
     height: 100vh;

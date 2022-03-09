@@ -1,3 +1,5 @@
 import { WrapperStyles } from './WorkoutLayout';
 
-export const Rest = () => <WrapperStyles>Rest</WrapperStyles>;
+export const Rest = ({ isPaused }) => (
+  <WrapperStyles isPaused={isPaused}>Rest</WrapperStyles>
+);

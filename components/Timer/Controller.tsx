@@ -96,7 +96,7 @@ const ControllerStyles = styled.div`
     pointer-events: none;
     svg {
       pointer-events: all;
-      fill: var(--cool200);
+      fill: var(--red500);
       opacity: 0.4;
     }
     button {

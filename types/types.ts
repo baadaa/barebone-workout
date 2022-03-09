@@ -17,5 +17,5 @@ export type Workout = {
   name: string;
   duration: number;
   target: TargetArea;
-  visual: ReactChild;
+  visual: (boolean) => JSX.Element;
 };

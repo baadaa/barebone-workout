@@ -1,5 +1,5 @@
 import { WrapperStyles } from './WorkoutLayout';
 
-export const AlternatingSupermans = () => (
-  <WrapperStyles>Alternating Supermans</WrapperStyles>
+export const AlternatingSupermans = ({ isPaused }) => (
+  <WrapperStyles isPaused={isPaused}>Alternating Supermans</WrapperStyles>
 );

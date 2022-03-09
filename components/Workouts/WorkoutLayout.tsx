@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
-export const WrapperStyles = styled.div`
+type WorkoutLayoutProp = {
+  isPaused?: boolean;
+};
+
+export const WrapperStyles = styled.div<WorkoutLayoutProp>`
   position: absolute;
   top: 0;
   left: 0;
@@ -9,6 +13,25 @@ export const WrapperStyles = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  .illo {
+    width: 80vh;
+    height: 80vh;
+    border: 1px solid red;
+    padding: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    svg *,
+    svg > *,
+    svg * > * {
+      transition: filter 0.2s, opacity 0.2s;
+      filter: ${(props) =>
+        props.isPaused ? 'grayscale(100%)' : 'none'}!important;
+      opacity: ${(props) => (props.isPaused ? '.8' : '1')}!important;
+      animation-play-state: ${(props) =>
+        props.isPaused ? 'paused' : 'running'}!important;
+    }
+  }
   .post-workout {
     text-align: center;
     h2,

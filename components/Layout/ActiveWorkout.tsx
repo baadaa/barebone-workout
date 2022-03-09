@@ -45,6 +45,16 @@ const ActiveWorkout = ({ program, primaryTarget, started, setStarted }) => {
     setSecondsSinceBeginning(0);
     setCurrentIndex(0);
   };
+  // function WorkoutAnim(Component) {
+  //   return function RenderingAnim() {
+  //     return <Component />;
+  //   };
+  // }
+  const WorkoutAnim = ({ workout: Obj, ...rest }) => {
+    if (!Obj) return null;
+    return <Obj />;
+  };
+  // const RenderAnim = WorkoutAnim(currentWorkout?.visual);
   useEffect(() => {
     if (started && secondsInCurrentWorkout >= routine[currentIndex]?.duration) {
       if (currentIndex >= routine.length - 1) {
@@ -83,7 +93,9 @@ const ActiveWorkout = ({ program, primaryTarget, started, setStarted }) => {
     <WrapperStyles>
       {!completed && (
         <>
-          {currentWorkout?.visual}
+          {currentWorkout?.visual(isPaused)}
+          {/* {currentWorkout && <WorkoutAnim workout={currentWorkout.visual} />} */}
+          {/* <WorkoutAnim workout={currentWorkout?.visual} /> */}
           <StatusBar
             second={Math.round(currentWorkoutTimeLeft)}
             currentWorkout={currentWorkout?.name}

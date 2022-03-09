@@ -1,5 +1,5 @@
 import { WrapperStyles } from './WorkoutLayout';
 
-export const AgilityCircles = () => (
-  <WrapperStyles>Agility Circles</WrapperStyles>
+export const AgilityCircles = ({ isPaused }) => (
+  <WrapperStyles isPaused={isPaused}>Agility Circles</WrapperStyles>
 );
