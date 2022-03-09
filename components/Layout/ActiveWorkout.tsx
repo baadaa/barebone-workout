@@ -75,7 +75,6 @@ const ActiveWorkout = ({ program, primaryTarget, started, setStarted }) => {
     );
     setRoutine(mappedRoutine);
     setTotalSecond(totalSec);
-    // console.log(mappedRoutine, totalSec, primaryTarget);
   }, []);
   useEffect(() => {
     if (!completed || !isBrowser) return;
@@ -94,8 +93,6 @@ const ActiveWorkout = ({ program, primaryTarget, started, setStarted }) => {
       {!completed && (
         <>
           {currentWorkout?.visual(isPaused)}
-          {/* {currentWorkout && <WorkoutAnim workout={currentWorkout.visual} />} */}
-          {/* <WorkoutAnim workout={currentWorkout?.visual} /> */}
           <StatusBar
             second={Math.round(currentWorkoutTimeLeft)}
             currentWorkout={currentWorkout?.name}
