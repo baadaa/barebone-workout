@@ -320,10 +320,7 @@ const Profile = () => {
               </div>
             ))
           ) : (
-            <div className="row empty">
-              No workout history
-              {/* <div className="cell">No workout history</div> */}
-            </div>
+            <div className="row empty">No workout history</div>
           )}
         </div>
         <div className="history-summary">
