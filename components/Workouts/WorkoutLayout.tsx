@@ -21,6 +21,7 @@ export const WrapperStyles = styled.div<WorkoutLayoutProp>`
     display: flex;
     align-items: center;
     justify-content: center;
+    svg,
     svg *,
     svg > *,
     svg * > * {

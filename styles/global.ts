@@ -69,6 +69,7 @@ export default createGlobalStyle`
     --ticker-height: 1.5rem;
     --flesh: #d5ae83;
     --flesh-shadow: #b7926c;
+    --hair: #202020;
     --pants: #414141;
     --shirt: #42cbef;
     --shirt-shadow: #2ca9c6;

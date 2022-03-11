@@ -3,6 +3,7 @@ import {
   Rest,
   TensAndTwos,
   AgilityCircles,
+  SidePlank,
   AlternatingSupermans,
 } from '@/components/Workouts';
 
@@ -236,14 +237,14 @@ export const workouts: Array<Workout> = [
     name: 'Side Plank (Right)',
     duration: 30,
     target: TargetArea.Core,
-    visual: (paused) => <TensAndTwos isPaused={paused} />,
+    visual: (paused) => <SidePlank isPaused={paused} direction="right" />,
   },
   {
     id: 41.2,
     name: 'Side Plank (Left)',
     duration: 30,
     target: TargetArea.Core,
-    visual: (paused) => <TensAndTwos isPaused={paused} />,
+    visual: (paused) => <SidePlank isPaused={paused} direction="left" />,
   },
   {
     id: 42,
