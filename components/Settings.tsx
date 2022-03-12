@@ -1,8 +1,9 @@
+import { SetStateAction, useEffect } from 'react';
 import styled from 'styled-components';
 import Profile from './Profile';
 import { Logo } from './Graphics';
 import { TargetArea, Program } from '@/types/types';
-import { SetStateAction, useEffect } from 'react';
+import { ColorModeButton } from './Layout';
 import { programs } from './Workouts/programs';
 import { getRandomInt } from '../utils';
 
@@ -16,14 +17,14 @@ const SettingsWrapper = styled.div`
   padding: 1.5rem;
   background: linear-gradient(
     106.79deg,
-    var(--cyan500) 6.17%,
-    var(--green500) 94.78%
+    var(--gradient-cyan-end) 6.17%,
+    var(--gradient-green-end) 94.78%
   );
   display: flex;
   justify-content: center;
   align-items: center;
   .container {
-    background-color: #fff;
+    background-color: var(--setting-panel-bg);
     box-shadow: var(--high-elevation);
     border-radius: 1.2rem;
     max-width: 100%;
@@ -45,7 +46,7 @@ const SettingsWrapper = styled.div`
   h3 {
     font-size: 10px;
     font-weight: 700;
-    color: var(--cool500);
+    color: var(--setting-label);
     letter-spacing: 0.095em;
     text-transform: uppercase;
     margin: 0 0.5rem 0 0;
@@ -66,8 +67,8 @@ const SettingsWrapper = styled.div`
   }
   label {
     border-radius: 0.7rem;
-    border: 1px solid var(--cool100);
-    color: var(--cool600);
+    border: 1px solid var(--setting-pill-border);
+    color: var(--setting-pill-text);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -75,7 +76,7 @@ const SettingsWrapper = styled.div`
     cursor: pointer;
     padding: 1rem;
     font-size: 1.3rem;
-    background: #fff;
+    background: var(--setting-pill);
     flex: 1;
     transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
   }
@@ -84,8 +85,8 @@ const SettingsWrapper = styled.div`
   }
   input:checked + label {
     border: 1px solid var(--cyan500);
-    background: var(--cyan50);
-    color: var(--cyan900);
+    background: var(--setting-pill-selected);
+    color: var(--setting-pill-selected-text);
   }
   input + label:hover {
     box-shadow: var(--low-elevation);
@@ -99,15 +100,23 @@ const SettingsWrapper = styled.div`
       opacity: 0;
     }
   }
-  button {
+
+  .inner-wrapper button {
     font-weight: 500;
-    background-color: var(--cyan500);
+    background-color: var(--button-bg);
     color: #fff;
-    border: none;
-    outline: none;
     padding: 1em;
     width: 100%;
     margin-top: 2rem;
+    /* &:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--low-elevation);
+      background-color: var(--button-bg-hover);
+    } */
+  }
+  button {
+    border: none;
+    outline: none;
     transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
     &:focus {
       border: var(--cyan800);
@@ -116,7 +125,7 @@ const SettingsWrapper = styled.div`
     &:hover {
       transform: translateY(-2px);
       box-shadow: var(--low-elevation);
-      background-color: var(--cyan600);
+      background-color: var(--button-bg-hover);
     }
   }
   @media screen and (max-width: 450px) {
@@ -236,6 +245,7 @@ const Settings: React.FC<SettingsProp> = ({
   };
   return (
     <SettingsWrapper>
+      <ColorModeButton />
       <div className="container">
         <div className="inner-wrapper">
           <div className="logo">

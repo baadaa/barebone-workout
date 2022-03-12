@@ -109,7 +109,7 @@ const ProfileWrapper = styled.div`
       font-weight: 500;
       padding-bottom: 0.5em;
       letter-spacing: 0.03em;
-      color: var(--cyan700);
+      color: var(--input-description);
     }
     &::after {
       content: ' ';
@@ -120,7 +120,9 @@ const ProfileWrapper = styled.div`
       height: auto;
       font-size: 2rem;
       padding: 1rem 5rem 1rem 1rem;
-      border: 1px solid var(--cool200);
+      color: var(--input-text);
+      border: 1px solid var(--input-border);
+      background-color: var(--input-bg);
     }
     .shuffle {
       background: transparent;
@@ -169,7 +171,7 @@ const ProfileWrapper = styled.div`
     display: table;
     width: 100%;
     font-size: 1.4rem;
-    color: var(--cool700);
+    color: var(--history);
   }
   .row {
     display: table-row;

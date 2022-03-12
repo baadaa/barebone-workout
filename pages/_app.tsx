@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
 
   useEffect(() => {
     const loadColorTheme = () => {
-      const savedTheme = localStorage.getItem('b_workout_colorMode');
+      const savedTheme = localStorage.getItem('bb7_colorMode');
       if (!savedTheme) {
         applyColorTheme(Theme.Light);
         return null;
@@ -25,7 +25,8 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   }, []);
 
   useEffect(() => {
-    setLocalStorage('b_workout_colorMode', JSON.stringify(theme));
+    setLocalStorage('bb7_colorMode', JSON.stringify(theme));
+    applyColorTheme(theme);
   }, [theme]);
 
   return (

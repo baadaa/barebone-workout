@@ -16,7 +16,6 @@ export const WrapperStyles = styled.div<WorkoutLayoutProp>`
   .illo {
     width: 80vh;
     height: 80vh;
-    border: 1px solid red;
     padding: 5vh;
     display: flex;
     align-items: center;
@@ -44,12 +43,12 @@ export const WrapperStyles = styled.div<WorkoutLayoutProp>`
     h2 {
       font-size: 4.8rem;
       margin-bottom: 0.25em;
-      color: var(--red400);
+      color: var(--post-workout-title);
     }
     h3 {
       font-size: 2.2rem;
       font-weight: 400;
-      color: var(--red700);
+      color: var(--post-workout-msg);
       margin-bottom: 2rem;
     }
     button {

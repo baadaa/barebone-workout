@@ -3,7 +3,6 @@ import { WrapperStyles } from './WorkoutLayout';
 import styled from 'styled-components';
 
 const Div = styled.div`
-  border: 1px solid red;
   .shapes > * {
     opacity: 0;
     animation-duration: 5s;

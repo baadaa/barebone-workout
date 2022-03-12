@@ -3,7 +3,6 @@ import { WrapperStyles } from './WorkoutLayout';
 import styled from 'styled-components';
 
 const Div = styled.div`
-  border: 1px solid red;
   svg {
     animation: flip 5s linear infinite;
     animation-timing-function: steps(1);

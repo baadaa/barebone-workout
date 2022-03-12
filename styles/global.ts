@@ -3,7 +3,6 @@ import { createGlobalStyle } from 'styled-components';
 export default createGlobalStyle`
   :root {
     --app-height: 100vh;
-    --bodyBg: #fff;
     --cyan: #00a2d9;
     --berry: #b7295a;
     --green: #7ab800;
@@ -65,7 +64,6 @@ export default createGlobalStyle`
     --medium-elevation: 0px 7px 9px rgba(0, 0, 0, 0.08), 2px 2px 9px rgba(0, 0, 0, 0.06);
     --low-elevation: 0px 4px 4px rgba(0, 0, 0, 0.1), 1px 1px 8px rgba(0, 0, 0, 0.06);
     --subtle-elevation: 0px 2px 7px rgba(0, 0, 0, 0.05), 1px 1px 8px rgba(0, 0, 0, 0.06);
-    --focus-shadow: 0px 1px 15px rgba(255, 100, 100, 0.4);
     --ticker-height: 1.5rem;
     --flesh: #d5ae83;
     --flesh-shadow: #b7926c;
@@ -111,6 +109,16 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
   .lightMode {
+    --focus-shadow: 0px 1px 15px rgba(255, 100, 100, 0.4);
+    --gradient-green-end: var(--green500);
+    --gradient-cyan-end: var(--cyan500);
+    --setting-panel-bg: #fff;
+    --setting-label: var(--cool500);
+    --setting-pill: #fff;
+    --setting-pill-text: var(--cool600);
+    --setting-pill-selected-text: var(--cyan900);
+    --setting-pill-border: var(--cool100);
+    --setting-pill-selected: var(--cyan50);
     --timer-stroke: var(--berry);
     --timer-bg: var(--cyan100);
     --timer-marker: var(--cyan500);
@@ -124,22 +132,57 @@ export default createGlobalStyle`
     --profile-primary: var(--cool800);
     --profile-secondary: var(--cool500);
     --profile-button: var(--cyan600);
+    --bodyBg: #fff;
+    --post-workout-title: var(--green500);
+    --post-workout-msg: var(--green700);
+    --logo-letters: var(--cool500);
+    --logo-dividers: var(--cool100);
+    --button-bg: var(--cyan500);
+    --button-bg-hover: var(--cyan500);
+    --input-description: var(--cyan700);
+    --input-bg: #fff;
+    --input-text: var(--cool700);
+    --input-border: var(--cool200);
+    --history: var(--cool700);
   }
 
   .darkMode {
+    --focus-shadow: 0px 1px 15px rgba(255, 255, 100, 0.4);
+    --gradient-green-end: var(--green900);
+    --gradient-cyan-end: var(--cyan900);
+    --setting-panel-bg: var(--cool800);
+    --setting-label: var(--cool200);
+    --setting-pill: var(--cool900);
+    --setting-pill-text: var(--cool300);
+    --setting-pill-selected-text: var(--cyan50);
+    --setting-pill-border: var(--cool700);
+    --setting-pill-selected: var(--cyan800);
     --timer-stroke: var(--berry);
-    --timer-bg: var(--cyan100);
+    --timer-bg: var(--cyan800);
     --timer-marker: var(--cyan500);
-    --label-current: var(--cyan600);
+    --label-current: var(--cyan500);
     --label-next: var(--cool500);
-    --controller-bg: var(--cool50);
-    --controller-text: var(--cyan800);
+    --controller-bg: var(--cool700);
+    --controller-text: var(--cool200);
     --controller-button: var(--cyan500);
     --controller-button-disabled: var(--cool300);
-    --profile-bg: var(--cool50);
-    --profile-primary: var(--cool800);
-    --profile-secondary: var(--cool500);
+    --profile-bg: var(--cool900);
+    --profile-primary: var(--cool200);
+    --profile-secondary: var(--cool400);
     --profile-button: var(--cyan600);
+    --bodyBg: var(--cool900);
+    --hair: var(--cool700);
+    --post-workout-title: var(--green500);
+    --post-workout-msg: var(--green400);
+    --logo-letters: var(--cool100);
+    --logo-dividers: var(--cool600);
+    --button-bg: var(--cyan600);
+    --button-bg-hover: var(--cyan700);
+    --input-description: var(--cyan400);
+    --input-bg: var(--cool800);
+    --input-text: var(--cool200);
+    --input-border: var(--cool400);
+    --history: var(--cool200);
   }
 
   #root, #__next {
