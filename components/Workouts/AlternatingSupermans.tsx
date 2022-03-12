@@ -10,7 +10,7 @@ const Div = styled.div`
     animation-iteration-count: infinite;
     animation-timing-function: steps(1);
   }
-  @keyframes shapes-1 {
+  @keyframes sup1 {
     0% {
       opacity: 1;
     }
@@ -27,10 +27,10 @@ const Div = styled.div`
   }
 
   #flat {
-    animation-name: shapes-1;
+    animation-name: sup1;
   }
 
-  @keyframes shapes-2 {
+  @keyframes sup2 {
     0% {
       opacity: 0;
     }
@@ -44,10 +44,10 @@ const Div = styled.div`
   }
 
   #right {
-    animation-name: shapes-2;
+    animation-name: sup2;
   }
 
-  @keyframes shapes-3 {
+  @keyframes sup3 {
     0%,
     50% {
       opacity: 0;
@@ -61,7 +61,7 @@ const Div = styled.div`
   }
 
   #left {
-    animation-name: shapes-3;
+    animation-name: sup3;
   }
 `;
 export const AlternatingSupermans = ({ isPaused }) => (

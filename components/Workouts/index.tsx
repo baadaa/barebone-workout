@@ -4,3 +4,7 @@ export * from './AgilityCircles';
 export * from './AlternatingSupermans';
 export * from './SidePlank';
 export * from './BalanceReaches';
+export * from './Bicycles';
+export * from './Burpees';
+export * from './Crunches';
+export * from './DoubleCrunches';

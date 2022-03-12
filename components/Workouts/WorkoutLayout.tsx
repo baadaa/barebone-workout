@@ -21,16 +21,18 @@ export const WrapperStyles = styled.div<WorkoutLayoutProp>`
     display: flex;
     align-items: center;
     justify-content: center;
+    svg {
+      width: 100%;
+    }
     svg,
     svg *,
     svg > *,
     svg * > * {
       transition: filter 0.2s, opacity 0.2s;
-      filter: ${(props) =>
-        props.isPaused ? 'grayscale(100%)' : 'none'}!important;
-      opacity: ${(props) => (props.isPaused ? '.8' : '1')}!important;
+      filter: ${(props) => (props.isPaused ? 'grayscale(100%)' : 'none')};
+      opacity: ${(props) => (props.isPaused ? '.8' : '1')};
       animation-play-state: ${(props) =>
-        props.isPaused ? 'paused' : 'running'}!important;
+        props.isPaused ? 'paused' : 'running'};
     }
   }
   .post-workout {

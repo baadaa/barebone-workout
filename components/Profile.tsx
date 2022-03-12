@@ -126,7 +126,7 @@ const ProfileWrapper = styled.div`
       background: transparent;
       transform: none;
       position: absolute;
-      top: var(--pad);
+      top: calc(50% - 0.6rem);
       right: 1.8rem;
       padding: 0;
       margin: 0;
@@ -219,7 +219,8 @@ const ProfileWrapper = styled.div`
         right: 0.6rem;
       }
       .shuffle {
-        top: 2.75rem;
+        top: calc(50% - 0.4rem);
+        /* top: 2.75rem; */
         right: 1rem;
       }
     }

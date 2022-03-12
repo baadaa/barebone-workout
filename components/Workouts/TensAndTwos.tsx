@@ -6,6 +6,7 @@ const Div = styled.div`
   border: 1px solid red;
   svg {
     animation: flip 5s linear infinite;
+    animation-timing-function: steps(1);
   }
   @keyframes flip {
     0%,

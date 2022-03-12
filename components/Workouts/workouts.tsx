@@ -5,6 +5,11 @@ import {
   AgilityCircles,
   SidePlank,
   AlternatingSupermans,
+  BalanceReaches,
+  Bicycles,
+  Burpees,
+  Crunches,
+  DoubleCrunches,
 } from '@/components/Workouts';
 
 export const workouts: Array<Workout> = [
@@ -41,28 +46,28 @@ export const workouts: Array<Workout> = [
     name: 'Balance Reaches (Right)',
     duration: 30,
     target: TargetArea.Lower,
-    visual: (paused) => <TensAndTwos isPaused={paused} />,
+    visual: (paused) => <BalanceReaches isPaused={paused} direction="rightt" />,
   },
   {
     id: 14.2,
     name: 'Balance Reaches (Left)',
     duration: 30,
     target: TargetArea.Lower,
-    visual: (paused) => <TensAndTwos isPaused={paused} />,
+    visual: (paused) => <BalanceReaches isPaused={paused} direction="left" />,
   },
   {
     id: 15,
     name: 'Bicycles',
     duration: 30,
     target: TargetArea.Core,
-    visual: (paused) => <TensAndTwos isPaused={paused} />,
+    visual: (paused) => <Bicycles isPaused={paused} />,
   },
   {
     id: 16,
     name: 'Burpees',
     duration: 30,
     target: TargetArea.Full,
-    visual: (paused) => <TensAndTwos isPaused={paused} />,
+    visual: (paused) => <Burpees isPaused={paused} />,
   },
   {
     id: 17,
@@ -76,7 +81,7 @@ export const workouts: Array<Workout> = [
     name: 'Crunches',
     duration: 30,
     target: TargetArea.Core,
-    visual: (paused) => <TensAndTwos isPaused={paused} />,
+    visual: (paused) => <Crunches isPaused={paused} />,
   },
   {
     id: 19,
@@ -104,7 +109,7 @@ export const workouts: Array<Workout> = [
     name: 'Double Crunches',
     duration: 30,
     target: TargetArea.Core,
-    visual: (paused) => <TensAndTwos isPaused={paused} />,
+    visual: (paused) => <DoubleCrunches isPaused={paused} />,
   },
   {
     id: 23,

@@ -32,6 +32,9 @@ const SettingsWrapper = styled.div`
   .inner-wrapper {
     padding: 3.5rem 3.5rem 0;
     margin-bottom: 3rem;
+    button {
+      border-radius: 3rem;
+    }
   }
   .logo {
     svg {
@@ -92,9 +95,11 @@ const SettingsWrapper = styled.div`
     display: flex;
     width: 100%;
     margin: 1rem 0;
+    input {
+      opacity: 0;
+    }
   }
   button {
-    border-radius: 3rem;
     font-weight: 500;
     background-color: var(--cyan500);
     color: #fff;
