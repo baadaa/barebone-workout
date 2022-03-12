@@ -7,4 +7,8 @@ export * from './BalanceReaches';
 export * from './Bicycles';
 export * from './Burpees';
 export * from './Crunches';
+export * from './Lunges';
+export * from './ReverseLunges';
 export * from './DoubleCrunches';
+export * from './TricepsDips';
+export * from './TricepsDipAndReach';

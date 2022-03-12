@@ -9,7 +9,11 @@ import {
   Bicycles,
   Burpees,
   Crunches,
+  Lunges,
+  ReverseLunges,
   DoubleCrunches,
+  TricepsDips,
+  TricepsDipAndReach,
 } from '@/components/Workouts';
 
 export const workouts: Array<Workout> = [
@@ -158,7 +162,7 @@ export const workouts: Array<Workout> = [
     name: 'Lunges',
     duration: 30,
     target: TargetArea.Lower,
-    visual: (paused) => <TensAndTwos isPaused={paused} />,
+    visual: (paused) => <Lunges isPaused={paused} />,
   },
   {
     id: 30,
@@ -228,7 +232,7 @@ export const workouts: Array<Workout> = [
     name: 'Reverse Lunges',
     duration: 30,
     target: TargetArea.Lower,
-    visual: (paused) => <TensAndTwos isPaused={paused} />,
+    visual: (paused) => <ReverseLunges isPaused={paused} />,
   },
   {
     id: 40,
@@ -305,14 +309,14 @@ export const workouts: Array<Workout> = [
     name: 'Triceps Dip and Reach',
     duration: 30,
     target: TargetArea.Upper,
-    visual: (paused) => <TensAndTwos isPaused={paused} />,
+    visual: (paused) => <TricepsDipAndReach isPaused={paused} />,
   },
   {
     id: 50,
     name: 'Triceps Dips',
     duration: 30,
     target: TargetArea.Upper,
-    visual: (paused) => <TensAndTwos isPaused={paused} />,
+    visual: (paused) => <TricepsDips isPaused={paused} />,
   },
   {
     id: 51,
