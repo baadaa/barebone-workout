@@ -13,6 +13,28 @@ export const WrapperStyles = styled.div<WorkoutLayoutProp>`
   display: flex;
   align-items: center;
   justify-content: center;
+  .rest-message {
+    font-size: 5vw;
+    line-height: 1.2;
+    /* text-align: center; */
+    font-weight: 300;
+    color: var(--rest-message);
+    animation: breathe 3s infinite linear;
+    @media screen and (max-width: 700px) {
+      font-size: 3rem;
+    }
+  }
+  @keyframes breathe {
+    0% {
+      transform: scale(1);
+    }
+    20% {
+      transform: scale(1.15);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
   .illo {
     width: 80vh;
     height: 80vh;

@@ -93,7 +93,7 @@ export default createGlobalStyle`
     font-size: 1.6rem;
     font-weight: 400;
     line-height: 1.4;
-    transition: transform .5s;
+    transition: transform .5s, background-color .2s;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -113,6 +113,7 @@ export default createGlobalStyle`
     --gradient-green-end: var(--green500);
     --gradient-cyan-end: var(--cyan500);
     --setting-panel-bg: #fff;
+    --setting-panel-border: var(--cool200);
     --setting-label: var(--cool500);
     --setting-pill: #fff;
     --setting-pill-text: var(--cool600);
@@ -138,19 +139,29 @@ export default createGlobalStyle`
     --logo-letters: var(--cool500);
     --logo-dividers: var(--cool100);
     --button-bg: var(--cyan500);
+    --button-bg-colormode: var(--cyan100);
+    --button-bg-colormode-border: var(--cyan200);
+    --button-bg-colormode-hover: var(--cyan50);
     --button-bg-hover: var(--cyan500);
     --input-description: var(--cyan700);
     --input-bg: #fff;
     --input-text: var(--cool700);
     --input-border: var(--cool200);
     --history: var(--cool700);
+    --history-summary-bg: #fff;
+    --history-summary-text: var(--cool700);
+    --history-summary-border: var(--cool200);
+    --colormode-sun: var(--cyan500);
+    --colormode-moon: var(--cyan300);
+    --rest-message: var(--cool300);
   }
 
   .darkMode {
     --focus-shadow: 0px 1px 15px rgba(255, 255, 100, 0.4);
-    --gradient-green-end: var(--green900);
-    --gradient-cyan-end: var(--cyan900);
+    --gradient-green-end: var(--black);
+    --gradient-cyan-end: #000;
     --setting-panel-bg: var(--cool800);
+    --setting-panel-border: var(--cool700);
     --setting-label: var(--cool200);
     --setting-pill: var(--cool900);
     --setting-pill-text: var(--cool300);
@@ -167,22 +178,34 @@ export default createGlobalStyle`
     --controller-button: var(--cyan500);
     --controller-button-disabled: var(--cool300);
     --profile-bg: var(--cool900);
-    --profile-primary: var(--cool200);
-    --profile-secondary: var(--cool400);
-    --profile-button: var(--cyan600);
+    --profile-primary: var(--cool300);
+    --profile-secondary: var(--cool500);
+    --profile-button: var(--cyan500);
     --bodyBg: var(--cool900);
     --hair: var(--cool700);
     --post-workout-title: var(--green500);
     --post-workout-msg: var(--green400);
-    --logo-letters: var(--cool100);
+    --logo-letters: var(--cool300);
     --logo-dividers: var(--cool600);
     --button-bg: var(--cyan600);
+    --button-bg-colormode: var(--cyan700);
+    --button-bg-colormode-border: var(--cyan600);
+    --button-bg-colormode-hover: var(--cyan600);
     --button-bg-hover: var(--cyan700);
     --input-description: var(--cyan400);
-    --input-bg: var(--cool800);
-    --input-text: var(--cool200);
-    --input-border: var(--cool400);
+    --input-bg: var(--cyan800);
+    --input-text: var(--cyan200);
+    --input-border: var(--cyan600);
     --history: var(--cool200);
+    --history-summary-bg: var(--cool800);
+    --history-summary-text: var(--cool100);
+    --history-summary-border: var(--cool600);
+    --colormode-sun: var(--yellow300);
+    --colormode-moon: var(--yellow500);
+    --rest-message: var(--green500);
+
+    --high-elevation: 0px 10px 20px rgba(155, 100, 100, 0.08), 6px 1px 18px rgba(155, 100, 100, 0.05);
+
   }
 
   #root, #__next {

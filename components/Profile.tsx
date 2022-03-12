@@ -150,10 +150,10 @@ const ProfileWrapper = styled.div`
     padding-bottom: 2rem;
     background-color: inherit;
     .content {
-      border: 1px solid var(--cool200);
+      border: 1px solid var(--history-summary-border);
       padding: 1.5rem;
-      background-color: #fff;
-      color: var(--cool700);
+      background-color: var(--history-summary-bg);
+      color: var(--history-summary-text);
       border-radius: 0.4rem;
       line-height: 1;
     }

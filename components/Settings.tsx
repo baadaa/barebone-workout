@@ -29,6 +29,7 @@ const SettingsWrapper = styled.div`
     border-radius: 1.2rem;
     max-width: 100%;
     position: relative;
+    border: 1px solid var(--setting-panel-border);
   }
   .inner-wrapper {
     padding: 3.5rem 3.5rem 0;

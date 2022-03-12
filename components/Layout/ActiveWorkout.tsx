@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { StatusBar, BarGraph, Controller } from '../Timer';
 import { Workout } from '@/types/types';
+import { ColorModeButton } from './ColorModeButton';
 import { WrapperStyles } from '../Workouts/WorkoutLayout';
 import { workouts } from '@/components/Workouts/workouts';
 import {
@@ -90,6 +91,7 @@ const ActiveWorkout = ({ program, primaryTarget, started, setStarted }) => {
   }, [completed]);
   return (
     <WrapperStyles>
+      <ColorModeButton />
       {!completed && (
         <>
           {currentWorkout?.visual(isPaused)}
@@ -125,6 +127,7 @@ const ActiveWorkout = ({ program, primaryTarget, started, setStarted }) => {
           </div>
         </>
       )}
+      <ColorModeButton />
     </WrapperStyles>
   );
 };
