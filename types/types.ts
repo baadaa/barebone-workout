@@ -1,5 +1,3 @@
-import { ReactChild } from 'react';
-
 export enum TargetArea {
   Full = 'Full Body',
   Upper = 'Upper Body',

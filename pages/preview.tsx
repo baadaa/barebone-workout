@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { Layout } from '@/components/Layout';
-import { TensAndTwos } from '@/components/Workouts';
 import { workouts } from '@/components/Workouts/workouts';
 import styled from 'styled-components';
 
