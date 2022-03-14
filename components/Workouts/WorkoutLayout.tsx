@@ -44,6 +44,7 @@ export const WrapperStyles = styled.div<WorkoutLayoutProp>`
     justify-content: center;
     svg {
       width: 100%;
+      max-height: 100%;
     }
     svg,
     svg *,
