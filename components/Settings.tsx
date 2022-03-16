@@ -1,7 +1,7 @@
-import { SetStateAction, useEffect } from 'react';
+import { SetStateAction, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Profile from './Profile';
-import { Logo, GitHub } from './Graphics';
+import { Logo, GitHub, About } from './Graphics';
 import { TargetArea, Program } from '@/types/types';
 import { ColorModeButton } from './Layout';
 import { programs } from './Workouts/programs';
@@ -30,6 +30,49 @@ const SettingsWrapper = styled.div`
     max-width: 100%;
     position: relative;
     border: 1px solid var(--setting-panel-border);
+  }
+  .about {
+    position: absolute;
+    opacity: 0;
+    transform: translateY(2rem);
+    transition: opacity 0.2s, transform 0.2s;
+    pointer-events: none;
+    width: 255px;
+    bottom: 5rem;
+    right: 2rem;
+    border-radius: 1rem;
+    padding: 2rem;
+    color: var(--controller-text);
+    font-size: 1.2rem;
+    background-color: var(--about-bg);
+    border: 1px solid var(--about-border);
+    box-shadow: var(--subtle-elevation);
+    button.close-about {
+      background-color: transparent;
+      box-shadow: none;
+      position: absolute;
+      top: -3rem;
+      right: 0rem;
+      color: #fff;
+      font-size: 2rem;
+    }
+    ul {
+      margin: 0;
+      padding: 0 0 0 1rem;
+    }
+    li + li {
+      margin-top: 1rem;
+    }
+    a {
+      text-decoration: underline;
+      font-weight: 500;
+      color: var(--controller-text);
+    }
+    &[data-showing='true'] {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+    }
   }
   .inner-wrapper {
     padding: 3.5rem 3.5rem 0;
@@ -162,6 +205,7 @@ const Settings: React.FC<SettingsProp> = ({
   setProgram,
   setStarted,
 }) => {
+  const [showAbout, setShowAbout] = useState(false);
   const handleDuration = (e) => {
     const targetDuration = parseFloat(e.target.dataset.duration);
     setDuration(targetDuration);
@@ -298,6 +342,54 @@ const Settings: React.FC<SettingsProp> = ({
         </div>
         <Profile />
       </div>
+      <div className="about" data-showing={showAbout}>
+        <button className="close-about" onClick={() => setShowAbout(false)}>
+          &times;
+        </button>
+        <ul>
+          <li>
+            All workouts are from{' '}
+            <a
+              href="https://twitter.com/bklika"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Brett Klika
+            </a>
+            &apos;s book{' '}
+            <a
+              href="https://www.amazon.com/Minutes-Fit-Anywhere-Interval-Workouts/dp/1452138478/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              7 Minutes to Fit
+            </a>
+            .
+          </li>
+          <li>
+            App is built with React and Next.js by{' '}
+            <a href="https://bald.design" target="_blank" rel="noreferrer">
+              Bumhan Yu
+            </a>
+          </li>
+          <li>
+            No copyright infringement intended. Just needed a better way to
+            utilize the book.
+          </li>
+          <li>
+            Get your copy of the{' '}
+            <a
+              href="https://www.amazon.com/Minutes-Fit-Anywhere-Interval-Workouts/dp/1452138478/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              here
+            </a>{' '}
+            for full exercise guides and plans.
+          </li>
+        </ul>
+      </div>
+      <About click={() => setShowAbout(!showAbout)} />
     </SettingsWrapper>
   );
 };
