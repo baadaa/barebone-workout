@@ -154,6 +154,7 @@ export default createGlobalStyle`
     --colormode-sun: var(--cyan500);
     --colormode-moon: var(--cyan300);
     --rest-message: var(--cool300);
+    --github: var(--cyan700);
   }
 
   .darkMode {
@@ -203,6 +204,7 @@ export default createGlobalStyle`
     --colormode-sun: var(--yellow300);
     --colormode-moon: var(--yellow500);
     --rest-message: var(--green500);
+    --github: var(--cool600);
 
     --high-elevation: 0px 10px 20px rgba(155, 100, 100, 0.08), 6px 1px 18px rgba(155, 100, 100, 0.05);
 

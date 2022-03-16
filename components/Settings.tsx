@@ -1,7 +1,7 @@
 import { SetStateAction, useEffect } from 'react';
 import styled from 'styled-components';
 import Profile from './Profile';
-import { Logo } from './Graphics';
+import { Logo, GitHub } from './Graphics';
 import { TargetArea, Program } from '@/types/types';
 import { ColorModeButton } from './Layout';
 import { programs } from './Workouts/programs';
@@ -246,6 +246,7 @@ const Settings: React.FC<SettingsProp> = ({
   };
   return (
     <SettingsWrapper>
+      <GitHub />
       <ColorModeButton />
       <div className="container">
         <div className="inner-wrapper">
