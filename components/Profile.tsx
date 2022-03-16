@@ -315,7 +315,7 @@ const Profile = () => {
             <div className="h-target head">Target</div>
           </div>
           {history.length !== 0 ? (
-            [...history].map((workout, i) => (
+            [...history].reverse().map((workout, i) => (
               <div className="row" key={i}>
                 <div className="h-date">{workout.date}</div>
                 <div className="h-duration">{workout.duration}</div>
