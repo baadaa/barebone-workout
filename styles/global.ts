@@ -66,11 +66,10 @@ export default createGlobalStyle`
     --subtle-elevation: 0px 2px 7px rgba(0, 0, 0, 0.05), 1px 1px 8px rgba(0, 0, 0, 0.06);
     --ticker-height: 1.5rem;
     --flesh: #d5ae83;
-    --flesh-shadow: #b7926c;
     --hair: #202020;
     --pants: #414141;
     --shirt: #42cbef;
-    --shirt-shadow: #2ca9c6;
+    --book: var(--cool200);
   }
   .height100vh {
     height: 100vh;
