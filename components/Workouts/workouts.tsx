@@ -6,6 +6,7 @@ import {
   SidePlank,
   AlternatingSupermans,
   DiveBomberPushUp,
+  HightailPushUps,
   CurtsyLunges,
   DiagonalLunges,
   BalanceReaches,
@@ -149,7 +150,7 @@ export const workouts: Array<Workout> = [
     name: 'Hightail Push-Ups',
     duration: 30,
     target: TargetArea.Upper,
-    visual: (paused) => <TensAndTwos isPaused={paused} />,
+    visual: (paused) => <HightailPushUps isPaused={paused} />,
   },
   {
     id: 25,
