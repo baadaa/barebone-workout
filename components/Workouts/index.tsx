@@ -4,6 +4,7 @@ export * from './AgilityCircles';
 export * from './AlternatingSupermans';
 export * from './CurtsyLunges';
 export * from './DiagonalLunges';
+export * from './DiveBomberPushUp';
 export * from './SidePlank';
 export * from './BalanceReaches';
 export * from './Bicycles';

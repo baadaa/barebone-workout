@@ -5,6 +5,7 @@ import {
   AgilityCircles,
   SidePlank,
   AlternatingSupermans,
+  DiveBomberPushUp,
   CurtsyLunges,
   DiagonalLunges,
   BalanceReaches,
@@ -127,7 +128,7 @@ export const workouts: Array<Workout> = [
     name: 'Dive-Bomber Push-Ups',
     duration: 30,
     target: TargetArea.Upper,
-    visual: (paused) => <TensAndTwos isPaused={paused} />,
+    visual: (paused) => <DiveBomberPushUp isPaused={paused} />,
   },
   {
     id: 22,
