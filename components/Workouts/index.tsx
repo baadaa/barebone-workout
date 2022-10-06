@@ -14,6 +14,7 @@ export * from './Crunches';
 export * from './CrossBodyV';
 export * from './HelloDollies';
 export * from './Lunges';
+export * from './JumpLunges';
 export * from './LateralLunges';
 export * from './JumpingJacks';
 export * from './PrimalStepUp';
