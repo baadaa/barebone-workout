@@ -17,7 +17,9 @@ import {
   HelloDollies,
   LateralLunges,
   Lunges,
+  JumpSquats,
   JumpLunges,
+  MountainClimbers,
   PrimalStepUp,
   ReverseLunges,
   ReverseLungeRotate,
@@ -167,7 +169,7 @@ export const workouts: Array<Workout> = [
     name: 'Jump Squats',
     duration: 30,
     target: TargetArea.Lower,
-    visual: (paused) => <TensAndTwos isPaused={paused} />,
+    visual: (paused) => <JumpSquats isPaused={paused} />,
   },
   {
     id: 27,
@@ -195,7 +197,7 @@ export const workouts: Array<Workout> = [
     name: 'Mountain Climbers',
     duration: 30,
     target: TargetArea.Full,
-    visual: (paused) => <TensAndTwos isPaused={paused} />,
+    visual: (paused) => <MountainClimbers isPaused={paused} />,
   },
   {
     id: 31,
