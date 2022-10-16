@@ -8,7 +8,7 @@ A very simple bodyweight workout app based on [Brett Klika](https://twitter.com/
 
 - Workout history is stored for tracking via Local Storage
 - Dark mode support
-- Built with [Next.js](https://nextjs.org/), [Styled-components](https://www.styled-components.com/), CSS animation and Local Storage.
+- Built with [Next.js](https://nextjs.org/) with [TypeScript](https://www.typescriptlang.org/), [Styled-components](https://www.styled-components.com/), CSS animation and Local Storage.
 
 ### TODOs
 
