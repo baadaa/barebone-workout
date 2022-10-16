@@ -1,6 +1,9 @@
 {
-  "name": "remember-fridge-nextjs",
+  "name": "barebone-bald-workout",
+  "version": "0.1.1",
   "private": true,
+  "description": "7-minute workout",
+  "author": "Bumhan Yu <bumhan.yu@gmail.com>",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
